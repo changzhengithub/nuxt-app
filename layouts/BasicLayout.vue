@@ -18,7 +18,7 @@
             <div class="user-avatar">
               <img src="@/assets/images/avatar.png" alt="">
             </div>
-            <div class="user-name">星辰</div>
+            <div class="user-name"></div>
           </div>
         </div>
       </header>

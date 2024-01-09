@@ -20,6 +20,8 @@
       </div>
     </div>
     <a-button type="primary">按钮</a-button>
+    
+    <a-button type="primary">按钮{{ counter }}</a-button>
   </div>
 </template>
 
@@ -28,6 +30,8 @@
  * @desc 首页
  * @author changz
  * */
+
+import { mapState } from 'vuex'
 export default {
   name: 'IndexPage',
   // 当前页面使用的基础布局
@@ -53,6 +57,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      counter: state => state.counter
+    })
+  },
 
 }
 </script>
@@ -61,17 +70,21 @@ export default {
   width: 100%;
   .index-banner {
     width: 100%;
-    height: 400px;
+    height: 500px;
     background-color: #fff;
-    .swiper-wrapper {
+    .swiper-container {
       width: 100%;
       height: 100%;
-      .swiper-slide {
+      .swiper-wrapper {
         width: 100%;
         height: 100%;
-        img {
+        .swiper-slide {
           width: 100%;
           height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }

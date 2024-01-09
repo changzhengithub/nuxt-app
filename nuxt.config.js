@@ -41,28 +41,40 @@ export default {
     '@nuxtjs/eslint-module',
   ],
 
+  // 中间件
+  router: {
+    middleware: 'auth'
+  },
+
   // nuxt内置模块
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios', // nuxt自带的axios请求模块
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: '/',
+    baseURL: '/',
     proxy: true
   },
 
   // 跨域设置
   proxy: {
     '/api': {
-      target: 'https://www.ahss.com.cn', // 目标接口域名
+      // target: 'https://www.ahss.com.cn', // 目标接口域名
+      target: 'http://192.168.100.14:3351', // 目标接口域名
       // pathRewrite: {
       //   '^/api': '/', // 把 /api 替换成 /
       // }
     }
+  },
+
+  // less配置
+  styleResources: {
+    less: ['@/assets/less/_flex.less', '@/assets/less/_common.less', '@/assets/less/theme.less']
   },
 
   // 构建配置，自定义 webpack 的构建配置
