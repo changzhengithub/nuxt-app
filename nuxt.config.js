@@ -2,19 +2,16 @@ export default {
   // 打包模式 static 静态预渲染 server 服务端渲染
   target: 'static',
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // 全局head设置
   head: {
     title: 'Nuxt预渲染',
-    htmlAttrs: {
-      lang: 'en',
-    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'keywords', name: 'keywords', content: 'Nuxt' },
       { hid: 'description', name: 'description', content: '这是一个Nuxt应用程序' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // 全局CSS/LESS/SCSS引入
@@ -54,7 +51,7 @@ export default {
     '@nuxtjs/style-resources'
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // Axios 模块设置
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
@@ -64,11 +61,13 @@ export default {
   // 跨域设置
   proxy: {
     '/api': {
-      // target: 'https://www.ahss.com.cn', // 目标接口域名
-      target: 'http://192.168.100.14:3351', // 目标接口域名
-      // pathRewrite: {
-      //   '^/api': '/', // 把 /api 替换成 /
-      // }
+      target: 'http://192.168.100.14:3351' // 目标接口域名
+    },
+    '/apis': {
+      target: 'https://www.ahss.com.cn', // 目标接口域名
+      pathRewrite: {
+        '^/api': '/', // 把 /api 替换成 /
+      }
     }
   },
 

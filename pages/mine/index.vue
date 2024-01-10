@@ -24,6 +24,17 @@ export default {
       title: '我的'
     }
   },
-
+  head () {
+    return {
+      title: 'Nuxt预渲染-我的',
+      meta: [
+        { hid: 'nuxtkeywords', name: 'keywords', content: '我的' },
+        { hid: 'nuxtdescription', name: 'description', content: '我的' }
+      ]
+    }
+  },
+  created() {
+    console.log(this.$route)
+  }
 }
 </script>

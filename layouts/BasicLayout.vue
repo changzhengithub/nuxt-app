@@ -15,10 +15,10 @@
         </div>
         <div class="header-right">
           <div class="right-user">
-            <div class="user-avatar">
+            <div class="user-avatar" v-if="userInfo.username">
               <img src="@/assets/images/avatar.png" alt="">
             </div>
-            <div class="user-name"></div>
+            <div class="user-name">{{ userInfo.username ? userInfo.username : '登录' }}</div>
           </div>
         </div>
       </header>
@@ -37,6 +37,8 @@
  * @description 公共布局页面
  * @author changz
  * */
+
+import { mapState } from 'vuex'
 export default {
   name: 'BasicLayout',
   data() {
@@ -50,6 +52,11 @@ export default {
         { name: '我的', path: '/mine' }
       ]
     }
+  },
+  computed: {
+    ...mapState({
+      userInfo: state => state.userInfo
+    })
   },
   created() {
     console.log(this.$route)

@@ -49,18 +49,17 @@ export default {
       pageNum: 1,
       pageSize: 9
     }
-    return $axios.$get('/api/news/pages', {
+    return $axios.$get('/apis/api/news/pages', {
       params
     }).then(res => {
       const { records } = res.data
-      console.log(records)
       return { newsList: records }
     }).catch(err => {
-      console.log(err)
       error({ statusCode: err.code, message: err.message })
-      return { newsList: [] }
+      // return { newsList: [] }
     })
   },
+  
   
   data() {
     return {
@@ -76,6 +75,15 @@ export default {
         observer: true,
         observeParents: true
       }
+    }
+  },
+  head () {
+    return {
+      title: 'Nuxt预渲染-新闻动态',
+      meta: [
+        { hid: 'nuxtkeywords', name: 'keywords', content: '新闻、动态' },
+        { hid: 'nuxtdescription', name: 'description', content: '公司新闻动态' }
+      ]
     }
   },
   computed: {
