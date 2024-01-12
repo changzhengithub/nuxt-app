@@ -4,7 +4,7 @@
  * */ 
 
 export const state = () => ({
-  userInfo: {},
+  userInfo: null,
   isLogin: false,
   counter: 0
 })
@@ -28,7 +28,6 @@ export const actions = {
         .then((response) => {
           console.log(response)
           commit('setUserInfo', response.data.data)
-          commit('setIsLogin', true)
           resolve()
         })
         .catch((err) => {

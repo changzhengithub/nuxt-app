@@ -62,6 +62,32 @@ export default {
       counter: state => state.counter
     })
   },
+  created() {
+    this.getStatDatga()
+  },
+  methods: {
+    getStatDatga() {
+      this.codeLoad = true
+      this.$axios.$get('/api/system/system').then(res => {
+        this.codeLoad = false
+        if (res.code !== 200) {
+          this.$notification.warning({
+            message: '提示',
+            description: res.msg
+          })
+          return
+        }
+        const data = res.data
+        console.log(data)
+      }).catch(err => {
+        this.codeLoad = false
+        this.$notification.warning({
+          message: '提示',
+          description: err.message
+        })
+      })
+    }
+  }
 
 }
 </script>

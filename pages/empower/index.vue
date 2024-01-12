@@ -89,7 +89,7 @@ export default {
     console.log(this.$baseUrl)
   },
   methods: {
-    ...mapMutations(['setUserInfo', 'setIsLogin']),
+    ...mapMutations(['setUserInfo']),
 
     togglePwdType() {
       this.pwdType = !this.pwdType
@@ -156,7 +156,6 @@ export default {
           const { token, data } = res
           storage.set('ACCESS_TOKEN', token, 7 * 24 * 60 * 60 * 1000)
           this.setUserInfo(data)
-          this.setUserInfo(true)
           this.$message.success('登录成功')
           this.$router.push({ path: '/' })
         })

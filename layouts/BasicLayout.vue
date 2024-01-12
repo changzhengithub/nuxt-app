@@ -14,12 +14,27 @@
           </nuxt-link>
         </div>
         <div class="header-right">
-          <div class="right-user">
-            <div class="user-avatar" v-if="userInfo.username">
-              <img src="@/assets/images/avatar.png" alt="">
+          <a-dropdown v-if="userInfo" placement="bottomRight">
+            <div class="right-user">
+              <div class="user-avatar">
+                <img src="@/assets/images/avatar.png" alt="">
+              </div>
+              <div class="user-name">{{ userInfo.username }}</div>
             </div>
-            <div class="user-name">{{ userInfo.username ? userInfo.username : '登录' }}</div>
-          </div>
+            <template v-slot:overlay>
+              <a-menu :selected-keys="[]">
+                <a-menu-item key="center" @click="gotoPage('/user-center')">
+                  <a-icon type="user" />
+                  个人中心
+                </a-menu-item>
+                <a-menu-item key="logout" @click="handleLogout">
+                  <a-icon type="logout" />
+                  退出登录
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+          <div class="right-login" v-else @click="gotoPage('/empower')">登录</div>
         </div>
       </header>
       <main class="basic-main">
@@ -37,8 +52,8 @@
  * @description 公共布局页面
  * @author changz
  * */
-
-import { mapState } from 'vuex'
+import storage from 'store'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'BasicLayout',
   data() {
@@ -61,6 +76,24 @@ export default {
   created() {
     console.log(this.$route)
     // this.routeList
+  },
+  methods: {
+    ...mapMutations(['setUserInfo']),
+    gotoPage(path) {
+      this.$router.push({ path })
+    },
+    handleLogout() {
+      this.$confirm({
+        title: '提示',
+        content: '确认退出登录',
+        onOk: () => {
+          storage.clearAll()
+          this.setUserInfo(null)
+          this.$router.push({ path: '/empower' })
+        },
+        onCancel() {}
+      })
+    }
   }
 }
 </script>
@@ -119,6 +152,7 @@ export default {
       .right-user {
         display: flex;
         align-items: center;
+        height: 64px;
         .user-avatar {
           width: 24px;
           height: 24px;
@@ -132,6 +166,11 @@ export default {
           font-size: 14px;
           color: #78787C;
         }
+      }
+      .right-login {
+        font-size: 14px;
+        color: #78787C;
+        cursor: pointer;
       }
     }
   }

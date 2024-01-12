@@ -63,10 +63,10 @@ export default {
     '/api': {
       target: 'http://192.168.100.14:3351' // 目标接口域名
     },
-    '/apis': {
+    '/content': {
       target: 'https://www.ahss.com.cn', // 目标接口域名
       pathRewrite: {
-        '^/api': '/', // 把 /api 替换成 /
+        '^/content': '/api', // 把 /api 替换成 /
       }
     }
   },

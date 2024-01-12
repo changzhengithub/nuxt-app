@@ -49,7 +49,7 @@ export default {
       pageNum: 1,
       pageSize: 9
     }
-    return $axios.$get('/apis/api/news/pages', {
+    return $axios.$get('/content/news/pages', {
       params
     }).then(res => {
       const { records } = res.data
@@ -59,8 +59,7 @@ export default {
       // return { newsList: [] }
     })
   },
-  
-  
+
   data() {
     return {
       title: '新闻页',

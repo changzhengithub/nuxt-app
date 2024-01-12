@@ -1,8 +1,11 @@
+/**
+ * @desc 全局请求拦截
+ * */ 
 import storage from 'store'
+import notification from 'ant-design-vue/lib/notification'
 
 export default function ({ $axios, redirect }) {
   $axios.onRequest(config => {
-    console.log(config)
     const token = storage.get('ACCESS_TOKEN')
     // 如果 token 存在
     // 让每个请求携带自定义 token 请根据实际情况自行修改
@@ -10,37 +13,26 @@ export default function ({ $axios, redirect }) {
       config.headers['Authorization'] = token
     }
   })
-  
-  $axios.onResponse(response => {
-    console.log(response)
-    console.log('Making response to ' + response)
-
-    if (response) {
-      const data = response.data
-  
-      if (response.status === 404) {
-        // notification.warning({
-        //   title: '不存在该页面',
-        //   message: data.msg
-        // })
-        console.log('不存在该页面：' + data.msg)
-        return new Promise(() => {})
-      }
-      if (response.status === 401) {
-        // notification.warning({
-        //   title: '不存在该页面',
-        //   message: data.msg
-        // })
-        console.log('授权验证失败：' + data.msg)
-        return new Promise(() => {})
-      }
-    }
-  })
 
   $axios.onError(error => {
     const code = parseInt(error.response && error.response.status)
-    if (code === 400) {
-      redirect('/400')
+    if (code === 401) {
+      storage.clearAll()
+      notification.warning({
+        message: '提示',
+        description: '授权验证失败，请重新登录'
+      })
+      setTimeout(() => {
+        // window.location.reload()
+        redirect('/empower')
+      }, 1000)
+      return new Promise(() => {})
+    } else if (code !== 200) {
+      notification.warning({
+        message: '提示',
+        description: error.message
+      })
+      return new Promise(() => {})
     }
   })
 }

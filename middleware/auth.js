@@ -8,16 +8,14 @@ export default function ({ app, route, redirect, store }) {
   const empowerList = ['/empower']
   if (process.client) {
     const token = storage.get('ACCESS_TOKEN')
-    if (!whiteList.includes(route.path)) {
-      if (token) {
-        if (!store.state.isLogin) {
-          store.dispatch('getUserInfo')
-        }
-      } else {
-        // eslint-disable-next-line no-lonely-if
-        if (!empowerList.includes(route.path)) {
-          redirect('/empower')
-        }
+    if (token) {
+      if (!store.state.userInfo) {
+        store.dispatch('getUserInfo')
+      }
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (!whiteList.includes(route.path) && !empowerList.includes(route.path)) {
+        redirect('/empower')
       }
     }
   }
