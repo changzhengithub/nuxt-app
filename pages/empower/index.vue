@@ -85,8 +85,6 @@ export default {
   },
   created() {
     this.getVerifyCode()
-
-    console.log(this.$baseUrl)
   },
   methods: {
     ...mapMutations(['setUserInfo']),

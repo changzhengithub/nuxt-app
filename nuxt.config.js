@@ -16,8 +16,8 @@ export default {
 
   // 全局CSS/LESS/SCSS引入
   css: [
-    // 'ant-design-vue/dist/antd.css', 
     // 'ant-design-vue/dist/antd.less'
+    '@/assets/css/reset.css', 
     '@/assets/less/main.less',
     '@/assets/less/theme.less'
   ],

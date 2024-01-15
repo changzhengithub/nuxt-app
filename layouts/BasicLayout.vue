@@ -73,10 +73,6 @@ export default {
       userInfo: state => state.userInfo
     })
   },
-  created() {
-    console.log(this.$route)
-    // this.routeList
-  },
   methods: {
     ...mapMutations(['setUserInfo']),
     gotoPage(path) {
@@ -100,7 +96,7 @@ export default {
 
 <style lang="less" scoped>
 .basic {
-  width: 100vw;
+  width: 100%;
   .basic-header {
     display: flex;
     align-items: center;

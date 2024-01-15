@@ -1,7 +1,6 @@
 <template>
   <div class="index">
     <h1>{{ title }}</h1>
-    <a-button type="primary">按钮</a-button>
   </div>
 </template>
 

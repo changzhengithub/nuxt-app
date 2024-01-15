@@ -19,13 +19,18 @@
         <div class="swiper-pagination"></div>
       </div>
     </div>
-    <div class="index-main">
-      <div class="main-header">新闻动态</div>
-      <div class="main-list">
-        <div class="list-item" v-for="(item, index) in newsList" :key="index" @click="gotoPage(item.id)">
-          <div class="item-title">{{ item.title }}</div>
-          <div class="item-img">
-            <img :src="item.imgStr" alt="">
+    <div class="index-container">
+      <div class="container-section">
+        <div class="section-wrap">
+          <div class="wrap-header">新闻动态</div>
+          
+          <div class="wrap-list">
+            <div class="list-item" v-for="(item, index) in newsList" :key="index" @click="gotoPage(item.id)">
+              <div class="item-img">
+                <img :src="baseUrl + item.imgStr" alt="">
+              </div>
+              <div class="item-title">{{ item.title }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -62,6 +67,7 @@ export default {
 
   data() {
     return {
+      baseUrl: 'https://www.ahss.com.cn',
       title: '新闻页',
       swiperOption: {
         loop: true,
@@ -90,12 +96,6 @@ export default {
       return this.$refs.mySwiper.swiper
     }
   },
-  created() {
-    this.$nextTick(() => {
-      console.log(this.$refs.mySwiper)
-      console.log(this.swiperData)
-    })
-  },
   methods: {
     gotoPage(id) {
       this.$router.push({
@@ -112,17 +112,87 @@ export default {
   width: 100%;
   .index-banner {
     width: 100%;
-    height: 400px;
+    height: 500px;
+    margin-bottom: 30px;
     background-color: #fff;
-    .swiper-wrapper {
+    overflow: hidden;
+
+    .swiper-container {
       width: 100%;
       height: 100%;
-      .swiper-slide {
+
+      .swiper-wrapper {
         width: 100%;
         height: 100%;
-        img {
+
+        .swiper-slide {
           width: 100%;
           height: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .index-container {
+    width: 100%;
+    overflow: hidden;
+    .container-section {
+      width: 100%;
+      .section-wrap {
+        width: 1240px;
+        padding: 40px 0;
+        margin: 0 auto;
+        .wrap-header {
+          width: 100%;
+          margin-bottom: 40px;
+          font-family: PingFang SC;
+          font-weight: bold;
+          font-size: 32px;
+          color: @title-color;
+          text-align: center;
+        }
+        .wrap-desc {
+          width: 100%;
+          margin-bottom: 40px;
+          font-family: PingFang SC;
+          font-size: 16px;
+          color: @desc-color;
+          text-align: center;
+        }
+        .wrap-list {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          .list-item {
+            width: 33.3%;
+            padding: 0 20px;
+            margin-bottom: 50px;
+            background-color: #fff;
+            cursor: pointer;
+            .item-title {
+              width: 100%;
+              font-family: PingFang SC;
+              font-size: 20px;
+              color: #1e1f23;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+            .item-img {
+              width: 100%;
+              height: 240px;
+              margin-bottom: 20px;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
         }
       }
     }

@@ -1,33 +1,8 @@
 <template>
   <div class="index">
-    <div class="index-banner">
-      <div v-swiper:mySwiper="swiperOption">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="@/assets/images/banner01.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="@/assets/images/banner02.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="@/assets/images/banner03.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="@/assets/images/banner04.jpg" alt="">
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-    <div class="index-main">
-      <div class="main-header">新闻动态</div>
-      <div class="main-list">
-        <div class="list-item" v-for="(item, index) in newsList" :key="index" @click="gotoPage(item.id)">
-          <div class="item-title">{{ item.title }}</div>
-          <div class="item-img">
-            <img :src="item.imgStr" alt="">
-          </div>
-        </div>
+    <div class="index-wrap">
+      <div class="wrap-header">{{ newsDetail.title }}</div>
+      <div class="wrap-content" v-html="newsDetail.contents">
       </div>
     </div>
   </div>
@@ -35,66 +10,33 @@
 
 <script>
 /**
- * @desc 新闻页
+ * @desc 新闻详情页
  * @author changz
  * */
 
 export default {
-  name: 'News',
+  name: 'NewsDetail',
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData ({ $axios, error}) {
-    const params = {
-      pageNum: 1,
-      pageSize: 9
-    }
-    return $axios.$get('/api/news/pages', {
-      params
-    }).then(res => {
-      const { records } = res.data
-      console.log(records)
-      return { newsList: records }
-    }).catch(err => {
-      console.log(err)
-      error({ statusCode: err.code, message: err.message })
-      return { newsList: [] }
-    })
+  asyncData ({ $axios, params, error}) {
+      return $axios.$get(`/content/findById?id=${params.id}`, {
+        params
+      }).then(res => {
+        const data = res.data
+        return { newsDetail: data }
+      }).catch(err => {
+        error({ statusCode: err.code, message: err.message })
+        // return { newsList: [] }
+      })
   },
   
   data() {
     return {
-      title: '新闻页',
-      swiperOption: {
-        loop: true,
-        autoplay: {
-          delay: 3000
-        },
-        pagination: {
-          el: '.swiper-pagination'
-        },
-        observer: true,
-        observeParents: true
-      }
+      title: '新闻详情页'
     }
-  },
-  // computed: {
-  //   mySwiper() {
-  //     return this.$refs.mySwiper.swiper
-  //   }
-  // },
-  created() {
-    // this.getAssetConfig()
-    this.$nextTick(() => {
-      console.log(this.$refs)
-    })
   },
   methods: {
-    gotoPage(id) {
-      this.$router.push({
-        path: `/news/${id}`
-      })
-    }
   }
 
 }
@@ -103,20 +45,23 @@ export default {
 <style lang="less" scoped>
 .index {
   width: 100%;
-  .index-banner {
-    width: 100%;
-    height: 400px;
-    background-color: #fff;
-    .swiper-wrapper {
+  background-color: #fff;
+  .index-wrap {
+    width: 1240px;
+    padding: 40px 0;
+    margin: 0 auto;
+    .wrap-header {
       width: 100%;
-      height: 100%;
-      .swiper-slide {
-        width: 100%;
-        height: 100%;
-        img {
-          width: 100%;
-          height: 100%;
-        }
+      margin-bottom: 30px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      font-size: 24px;
+      color: #1e1f23;
+    }
+    .wrap-content {
+      width: 100%;
+      img {
+        max-width: 100%;
       }
     }
   }

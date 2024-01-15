@@ -26,7 +26,6 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios.get('/api/owner/info')
         .then((response) => {
-          console.log(response)
           commit('setUserInfo', response.data.data)
           resolve()
         })
