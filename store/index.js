@@ -1,7 +1,7 @@
 /**
  * @desc vuex状态管理器
  * vuex根模块
- * */ 
+ * */
 
 export const state = () => ({
   userInfo: null,
@@ -22,7 +22,7 @@ export const mutations = {
 }
 
 export const actions = {
-  getUserInfo ({ commit }) {
+  getUserInfo({ commit }) {
     return new Promise((resolve, reject) => {
       this.$axios.get('/api/owner/info')
         .then((response) => {

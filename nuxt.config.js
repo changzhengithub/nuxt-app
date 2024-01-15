@@ -17,7 +17,7 @@ export default {
   // 全局CSS/LESS/SCSS引入
   css: [
     // 'ant-design-vue/dist/antd.less'
-    '@/assets/css/reset.css', 
+    '@/assets/css/reset.css',
     '@/assets/less/main.less',
     '@/assets/less/theme.less'
   ],
@@ -35,7 +35,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module'
   ],
 
   // 中间件
@@ -66,7 +66,7 @@ export default {
     '/content': {
       target: 'https://www.ahss.com.cn', // 目标接口域名
       pathRewrite: {
-        '^/content': '/api', // 把 /api 替换成 /
+        '^/content': '/api' // 把 /api 替换成 /
       }
     }
   },
