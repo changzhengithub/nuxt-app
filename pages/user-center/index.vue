@@ -11,14 +11,19 @@
  * */
 export default {
   name: 'About',
-  // 用户获取数据
-  asyncData(context) {
-    return { name: 'World' }
-  },
-
   data() {
     return {
       title: '个人中心'
+    }
+  },
+
+  head () {
+    return {
+      title: 'Nuxt预渲染-个人中心',
+      meta: [
+        { hid: 'nuxtkeywords', name: 'keywords', content: '新闻、动态' },
+        { hid: 'nuxtdescription', name: 'description', content: '公司新闻动态' }
+      ]
     }
   }
 }

@@ -128,6 +128,15 @@ export default {
         }
       ]
     }
+  },
+  head () {
+    return {
+      title: 'Nuxt预渲染-产品页',
+      meta: [
+        { hid: 'nuxtkeywords', name: 'keywords', content: '新闻、动态' },
+        { hid: 'nuxtdescription', name: 'description', content: '公司新闻动态' }
+      ]
+    }
   }
 }
 </script>
