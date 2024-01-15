@@ -19,18 +19,17 @@ export default {
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData ({ $axios, params, error}) {
-      return $axios.$get(`/content/findById?id=${params.id}`, {
-        params
-      }).then(res => {
-        const data = res.data
-        return { newsDetail: data }
-      }).catch(err => {
-        error({ statusCode: err.code, message: err.message })
-        // return { newsList: [] }
-      })
+  asyncData ({ $axios, params, error }) {
+    return $axios.$get(`/content/findById?id=${params.id}`, {
+      params
+    }).then(res => {
+      const data = res.data
+      return { newsDetail: data }
+    }).catch(err => {
+      error({ statusCode: err.code, message: err.message })
+      // return { newsList: [] }
+    })
   },
-  
   data() {
     return {
       title: '新闻详情页'

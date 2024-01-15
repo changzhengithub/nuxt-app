@@ -23,7 +23,6 @@
       <div class="container-section">
         <div class="section-wrap">
           <div class="wrap-header">新闻动态</div>
-          
           <div class="wrap-list">
             <div class="list-item" v-for="(item, index) in newsList" :key="index" @click="gotoPage(item.id)">
               <div class="item-img">
@@ -49,7 +48,7 @@ export default {
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData ({ $axios, error}) {
+  asyncData ({ $axios, error }) {
     const params = {
       pageNum: 1,
       pageSize: 9

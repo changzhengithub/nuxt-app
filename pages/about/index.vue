@@ -13,12 +13,16 @@
           <div class="background-detail">
             <div class="detail-title">公司简介</div>
             <div class="detail-desc">
-              <p>安徽三实是由一群技术专家于2013年共同发起创立、专注于信息技术服务的高新技术企业。公司主要围绕“成为用户长期可信的一站式IT服务管家”的组织愿景，在践行“诚实做人、踏实做事、实干兴业”的组织价值观下，为用户提供贴身定制“软件开发、数据分析、安全保障、运行维护、系统集成”等全系列专业的信息化服务，落实三实“让用户工作变简单”的组织使命。</p>
-              <p>经过多年的探索和沉淀，在业务数字化定制开发方面，公司已经形成覆盖房产监管行业（房管局）全业务场景、国有房屋资产租赁管理全业务场景的行业应用软件产品解决方案；在IT基础设施支撑服务方面，公司依托自主研发的“云悉IT统一运营平台”和模块化的服务产品，为用户灵活定制全系列基础信息化运维服务解决方案，满足用户数据中心个性化、全场景的运维服务需求。</p>
+              <p>
+                安徽三实是由一群技术专家于2013年共同发起创立、专注于信息技术服务的高新技术企业。公司主要围绕“成为用户长期可信的一站式IT服务管家”的组织愿景，在践行“诚实做人、踏实做事、实干兴业”的组织价值观下，为用户提供贴身定制“软件开发、数据分析、安全保障、运行维护、系统集成”等全系列专业的信息化服务，落实三实“让用户工作变简单”的组织使命。
+              </p>
+              <p>
+                经过多年的探索和沉淀，在业务数字化定制开发方面，公司已经形成覆盖房产监管行业（房管局）全业务场景、国有房屋资产租赁管理全业务场景的行业应用软件产品解决方案；在IT基础设施支撑服务方面，公司依托自主研发的“云悉IT统一运营平台”和模块化的服务产品，为用户灵活定制全系列基础信息化运维服务解决方案，满足用户数据中心个性化、全场景的运维服务需求。
+              </p>
             </div>
           </div>
           <div class="background-img">
-            <img src="@/assets/images/data.png" alt="">
+            <img src="@/assets/images/data.png" alt="" />
           </div>
         </div>
       </div>
@@ -28,7 +32,7 @@
           <div class="wrap-adv">
             <div class="adv-item" v-for="(item, index) in advList" :key="index">
               <div class="item-icon">
-                <img :src="item.icon" alt=""/>
+                <img :src="item.icon" alt="" />
               </div>
               <div class="item-title">{{ item.title }}</div>
               <div class="item-desc">{{ item.remark }}</div>
@@ -50,10 +54,10 @@ export default {
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData (context) {
+  asyncData(context) {
     return { name: 'World' }
   },
-  
+
   data() {
     return {
       title: '关于我们',
@@ -112,8 +116,7 @@ export default {
         }
       ]
     }
-  },
-
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -208,7 +211,7 @@ export default {
         width: 1240px;
         padding: 50px 0;
         margin: 0 auto;
-  
+
         .wrap-header {
           width: 100%;
           margin-bottom: 40px;

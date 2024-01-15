@@ -1,6 +1,6 @@
 /**
  * @desc 全局请求拦截
- * */ 
+ * */
 import storage from 'store'
 import notification from 'ant-design-vue/lib/notification'
 
@@ -26,13 +26,13 @@ export default function ({ $axios, redirect }) {
         // window.location.reload()
         redirect('/empower')
       }, 1000)
-      return new Promise(() => {})
+      return new Promise(() => { })
     } else if (code !== 200) {
       notification.warning({
         message: '提示',
         description: error.message
       })
-      return new Promise(() => {})
+      return new Promise(() => { })
     }
   })
 }

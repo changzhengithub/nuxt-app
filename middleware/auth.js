@@ -1,7 +1,7 @@
 /**
  * @desc 权限验证
  * 判断哪些页面需要登录，跳转到登录接口
- * */ 
+ * */
 import storage from 'store'
 export default function ({ app, route, redirect, store }) {
   const whiteList = ['/', '/product', '/news', '/about']

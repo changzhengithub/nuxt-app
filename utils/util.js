@@ -47,7 +47,7 @@ export const cutStrByFullLength = (str = '', maxLength) => {
 export function deepClone(target) {
   // 引用类型
   if (typeof target === 'object' && target !== null) {
-    let targeClone = Array.isArray(target) ? [] : {}
+    const targeClone = Array.isArray(target) ? [] : {}
     for (const key in target) {
       targeClone[key] = deepClone(target[key])
     }

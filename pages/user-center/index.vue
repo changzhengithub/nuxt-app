@@ -12,15 +12,14 @@
 export default {
   name: 'About',
   // 用户获取数据
-  asyncData (context) {
+  asyncData(context) {
     return { name: 'World' }
   },
-  
+
   data() {
     return {
       title: '个人中心'
     }
-  },
-
+  }
 }
 </script>

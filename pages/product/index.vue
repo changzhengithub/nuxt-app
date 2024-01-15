@@ -67,10 +67,9 @@ export default {
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData (context) {
+  asyncData(context) {
     return { name: 'World' }
   },
-  
   data() {
     return {
       title: '产品页',
@@ -224,7 +223,7 @@ export default {
         width: 1240px;
         padding: 50px 0;
         margin: 0 auto;
-  
+
         .wrap-header {
           width: 100%;
           margin-bottom: 40px;

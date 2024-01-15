@@ -4,12 +4,12 @@
       <header class="basic-header">
         <nuxt-link to="/">
           <div class="header-logo">
-            <img src="/logo.png" alt="">
+            <img src="/logo.png" alt="" />
             <h1 class="logo-title">Nuxt预渲染</h1>
           </div>
         </nuxt-link>
         <div class="header-nav">
-          <nuxt-link class="nav-item" :to="item.path" :class="{'item-active': $route.path == item.path}" v-for="(item, index) in routeList" :key="index">
+          <nuxt-link class="nav-item" :to="item.path" :class="{ 'item-active': $route.path == item.path }" v-for="(item, index) in routeList" :key="index">
             {{ item.name }}
           </nuxt-link>
         </div>
@@ -17,7 +17,7 @@
           <a-dropdown v-if="userInfo" placement="bottomRight">
             <div class="right-user">
               <div class="user-avatar">
-                <img src="@/assets/images/avatar.png" alt="">
+                <img src="@/assets/images/avatar.png" alt="" />
               </div>
               <div class="user-name">{{ userInfo.username }}</div>
             </div>
@@ -134,7 +134,7 @@ export default {
         color: #333;
         border-bottom: 2px solid transparent;
         cursor: pointer;
-        transition: all .3s;
+        transition: all 0.3s;
         &:hover {
           color: #165dff;
         }
@@ -160,12 +160,12 @@ export default {
         .user-name {
           margin-left: 10px;
           font-size: 14px;
-          color: #78787C;
+          color: #78787c;
         }
       }
       .right-login {
         font-size: 14px;
-        color: #78787C;
+        color: #78787c;
         cursor: pointer;
       }
     }

@@ -13,8 +13,12 @@
           <div class="background-detail">
             <div class="detail-title">行业背景</div>
             <div class="detail-desc">
-              <p>于2021年9月1日起施行的《数据安全法》作为我国数据安全领域的基础性法律，对重要数据在管理形式和保护要求上提出了严格和明确的保护制度，强化了重要数据、核心数据的保护要求，对政府与企事业单位数据管理部门提出了更高的要求。</p>
-              <p>传统的信息安全建设，往往侧重于外部安全威胁，对内部人员却缺乏有效的管控。权威的安全调查结果表明，60%以上的安全事件均与内部人员有关，这其中既包括主观攻击行为（违规访问、恶意操作、数据窃取、程序后门等），也包括非恶意行为（误操作、权限滥用）。由此可见，规范内部人员的数据访问行为，特别是对核心数据的安全管控势在必行。</p>
+              <p>
+                于2021年9月1日起施行的《数据安全法》作为我国数据安全领域的基础性法律，对重要数据在管理形式和保护要求上提出了严格和明确的保护制度，强化了重要数据、核心数据的保护要求，对政府与企事业单位数据管理部门提出了更高的要求。
+              </p>
+              <p>
+                传统的信息安全建设，往往侧重于外部安全威胁，对内部人员却缺乏有效的管控。权威的安全调查结果表明，60%以上的安全事件均与内部人员有关，这其中既包括主观攻击行为（违规访问、恶意操作、数据窃取、程序后门等），也包括非恶意行为（误操作、权限滥用）。由此可见，规范内部人员的数据访问行为，特别是对核心数据的安全管控势在必行。
+              </p>
             </div>
           </div>
           <div class="background-img">
@@ -45,7 +49,7 @@
           <div class="wrap-adv">
             <div class="adv-item" v-for="(item, index) in advList" :key="index">
               <div class="item-icon">
-                <img :src="item.icon" alt=""/>
+                <img :src="item.icon" alt="" />
               </div>
               <div class="item-title">{{ item.title }}</div>
               <div class="item-desc">{{ item.remark }}</div>
@@ -67,10 +71,9 @@ export default {
   // 当前页面使用的基础布局
   layout: 'BasicLayout',
   // 用户获取数据
-  asyncData (context) {
+  asyncData(context) {
     return { name: 'World' }
   },
-  
   data() {
     return {
       title: '我的',
@@ -130,7 +133,7 @@ export default {
       ]
     }
   },
-  head () {
+  head() {
     return {
       title: 'Nuxt预渲染-我的',
       meta: [
@@ -156,6 +159,7 @@ export default {
     overflow: hidden;
     background: url('@/assets/images/database.jpg') no-repeat center center;
     background-size: cover;
+
     .banner-title {
       margin: 110px 0 20px 0;
       font-size: 32px;
@@ -163,12 +167,14 @@ export default {
       font-weight: bold;
       color: #ffffff;
     }
+
     .banner-text {
       color: #efefef;
       font-size: 16px;
       font-weight: bold;
       letter-spacing: 1px;
     }
+
     .banner-intro {
       width: 572px;
       margin-top: 10px;
@@ -177,6 +183,7 @@ export default {
       letter-spacing: 1px;
       color: #efefef;
     }
+
     .banner-request {
       width: 154px;
       height: 54px;
@@ -191,10 +198,13 @@ export default {
       cursor: pointer;
     }
   }
+
   .index-container {
     width: 100%;
+
     .container-section {
       width: 100%;
+
       .section-background {
         display: flex;
         align-items: center;
@@ -202,9 +212,11 @@ export default {
         width: 1240px;
         padding: 40px 0;
         margin: 0 auto;
+
         .background-detail {
           width: 60%;
           text-align: left;
+
           .detail-title {
             width: 100%;
             margin-bottom: 40px;
@@ -213,30 +225,35 @@ export default {
             font-size: 40px;
             color: #1e1f23;
           }
+
           .detail-desc {
             width: 100%;
             margin-bottom: 40px;
             font-family: PingFang SC;
             font-size: 16px;
             color: #686c78;
+
             p {
               margin-bottom: 10px;
               line-height: 1.5;
             }
           }
         }
+
         .background-img {
           width: 340px;
+
           img {
             width: 100%;
           }
         }
       }
+
       .section-wrap {
         width: 1240px;
         padding: 50px 0;
         margin: 0 auto;
-  
+
         .wrap-header {
           width: 100%;
           margin-bottom: 40px;
@@ -246,6 +263,7 @@ export default {
           color: #1e1f23;
           text-align: center;
         }
+
         .wrap-desc {
           width: 100%;
           margin-bottom: 40px;
@@ -259,23 +277,28 @@ export default {
           display: flex;
           flex-wrap: wrap;
           width: 100%;
+
           .product-item {
             display: flex;
             width: 33.3%;
             margin-bottom: 30px;
+
             .item-img {
               width: 62px;
               height: 62px;
               flex-shrink: 0;
               margin-right: 15px;
               margin-top: 5px;
+
               img {
                 width: 100%;
                 height: 100%;
               }
             }
+
             .item-info {
               flex: 1;
+
               .info-title {
                 width: 100%;
                 margin-bottom: 10px;
@@ -284,6 +307,7 @@ export default {
                 font-size: 20px;
                 color: @title-color;
               }
+
               .info-desc {
                 width: 90%;
                 font-family: PingFang SC;
@@ -293,11 +317,13 @@ export default {
             }
           }
         }
+
         .wrap-adv {
           display: flex;
           align-items: center;
           justify-content: space-around;
           width: 100%;
+
           .adv-item {
             display: flex;
             flex-direction: column;
@@ -308,15 +334,18 @@ export default {
             padding: 0 25px;
             border-radius: 10px;
             background-color: #fff;
+
             .item-icon {
               width: 100px;
               height: 100px;
               margin-bottom: 20px;
+
               img {
                 width: 100%;
                 height: 100%;
               }
             }
+
             .item-title {
               width: 100%;
               margin-bottom: 30px;
@@ -326,6 +355,7 @@ export default {
               color: #1e1f23;
               text-align: center;
             }
+
             .item-desc {
               width: 100%;
               font-family: PingFang SC;

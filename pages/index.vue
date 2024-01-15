@@ -94,6 +94,7 @@ export default {
           })
           return
         }
+
         const data = res.data
         console.log(data)
       }).catch(err => {
