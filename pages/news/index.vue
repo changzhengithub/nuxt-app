@@ -25,10 +25,8 @@
           <div class="wrap-header">新闻动态</div>
           <div class="wrap-list">
             <div class="list-item" v-for="(item, index) in newsList" :key="index" @click="gotoPage(item.id)">
-              <div class="item-img">
-                <img :src="baseUrl + item.imgStr" alt="">
-              </div>
               <div class="item-title">{{ item.title }}</div>
+              <div class="item-desc">{{ item.body }}</div>
             </div>
           </div>
         </div>
@@ -49,15 +47,14 @@ export default {
   layout: 'BasicLayout',
   // 用户获取数据
   asyncData ({ $axios, error }) {
-    const params = {
-      pageNum: 1,
-      pageSize: 9
-    }
-    return $axios.$get('/content/news/pages', {
-      params
+    // const params = {
+    //   pageNum: 1,
+    //   pageSize: 9
+    // }
+    return $axios.$get('/posts', {
+      // params
     }).then(res => {
-      const { records } = res.data
-      return { newsList: records }
+      return { newsList: res.slice(0, 10) }
     }).catch(err => {
       error({ statusCode: err.code, message: err.message })
       // return { newsList: [] }
@@ -167,29 +164,23 @@ export default {
           flex-wrap: wrap;
           width: 100%;
           .list-item {
-            width: 33.3%;
-            padding: 0 20px;
-            margin-bottom: 50px;
-            background-color: #fff;
+            width: 100%;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            background-color: #f2f2f2;
             cursor: pointer;
+            border-radius: 20px;
             .item-title {
               width: 100%;
-              font-family: PingFang SC;
-              font-size: 20px;
+              margin-bottom: 10px;
+              font-size: 24px;
               color: #1e1f23;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
             }
-            .item-img {
+            .item-desc {
               width: 100%;
-              height: 240px;
-              margin-bottom: 20px;
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
+              font-size: 20px;
+              color: #666;
+              line-height: 1.5;
             }
           }
         }

@@ -2,7 +2,7 @@
  * @desc 全局请求拦截
  * */
 import storage from 'store'
-import notification from 'ant-design-vue/lib/notification'
+// import notification from 'ant-design-vue/lib/notification'
 
 export default function ({ $axios, redirect }) {
   $axios.onRequest(config => {
@@ -18,20 +18,20 @@ export default function ({ $axios, redirect }) {
     const code = parseInt(error.response && error.response.status)
     if (code === 401) {
       storage.clearAll()
-      notification.warning({
-        message: '提示',
-        description: '授权验证失败，请重新登录'
-      })
+      // notification.warning({
+      //   message: '提示',
+      //   description: '授权验证失败，请重新登录'
+      // })
       setTimeout(() => {
         // window.location.reload()
         redirect('/empower')
       }, 1000)
       return new Promise(() => { })
     } else if (code !== 200) {
-      notification.warning({
-        message: '提示',
-        description: error.message
-      })
+      // notification.warning({
+      //   message: '提示',
+      //   description: error.message
+      // })
       return new Promise(() => { })
     }
   })

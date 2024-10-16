@@ -84,7 +84,7 @@ export default {
     })
   },
   created() {
-    this.getVerifyCode()
+    // this.getVerifyCode()
   },
   methods: {
     ...mapMutations(['setUserInfo']),
@@ -122,53 +122,62 @@ export default {
     },
     // 登录
     submitForm() {
-      const { name, password, code, key } = this.formData
-      if (!name) {
-        this.$message.warning('请输入用户名')
-        return
-      }
-      if (!password) {
-        this.$message.warning('请输入密码')
-        return
-      }
-      if (!code) {
-        this.$message.warning('请输入验证码')
-        return
-      }
-      const params = {
-        name,
-        password,
-        code,
-        key
-        // ...this.encryptData
-      }
-      this.submitLoad = true
-      this.$axios
-        .$post('/api/login', params)
-        .then(res => {
-          this.submitLoad = false
-          if (res.code !== 200) {
-            this.$notification.warning({
-              message: '提示',
-              description: res.msg
-            })
-            this.getVerifyCode()
-            return
-          }
-          const { token, data } = res
-          storage.set('ACCESS_TOKEN', token, 7 * 24 * 60 * 60 * 1000)
-          this.setUserInfo(data)
-          this.$message.success('登录成功')
-          this.$router.push({ path: '/' })
-        })
-        .catch(err => {
-          this.submitLoad = false
-          this.getVerifyCode()
-          this.$notification.warning({
-            message: '提示',
-            description: err.message
-          })
-        })
+      storage.set('ACCESS_TOKEN', 'TOKEN_LOGIN_1010001001')
+      this.setUserInfo({
+        id: 1,
+        username: '超级管理员'
+      })
+      this.$message.success('登录成功')
+      this.$router.push({ path: '/' })
+
+      // 对接你的真实数据
+      // const { name, password, code, key } = this.formData
+      // if (!name) {
+      //   this.$message.warning('请输入用户名')
+      //   return
+      // }
+      // if (!password) {
+      //   this.$message.warning('请输入密码')
+      //   return
+      // }
+      // if (!code) {
+      //   this.$message.warning('请输入验证码')
+      //   return
+      // }
+      // const params = {
+      //   name,
+      //   password,
+      //   code,
+      //   key
+      //   // ...this.encryptData
+      // }
+      // this.submitLoad = true
+      // this.$axios
+      //   .$post('/api/login', params)
+      //   .then(res => {
+      //     this.submitLoad = false
+      //     if (res.code !== 200) {
+      //       this.$notification.warning({
+      //         message: '提示',
+      //         description: res.msg
+      //       })
+      //       this.getVerifyCode()
+      //       return
+      //     }
+      //     const { token, data } = res
+      //     storage.set('ACCESS_TOKEN', token, 7 * 24 * 60 * 60 * 1000)
+      //     this.setUserInfo(data)
+      //     this.$message.success('登录成功')
+      //     this.$router.push({ path: '/' })
+      //   })
+      //   .catch(err => {
+      //     this.submitLoad = false
+      //     this.getVerifyCode()
+      //     this.$notification.warning({
+      //       message: '提示',
+      //       description: err.message
+      //     })
+      //   })
     }
   }
 }

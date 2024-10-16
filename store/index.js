@@ -22,16 +22,21 @@ export const mutations = {
 }
 
 export const actions = {
+  // 获取用户信息，防刷新
   getUserInfo({ commit }) {
     return new Promise((resolve, reject) => {
-      this.$axios.get('/api/owner/info')
-        .then((response) => {
-          commit('setUserInfo', response.data.data)
-          resolve()
-        })
-        .catch((err) => {
-          reject(err)
-        })
+      commit('setUserInfo', {
+        id: 1,
+        username: '超级管理员'
+      })
+      // this.$axios.get('/api/owner/info')
+      //   .then((response) => {
+      //     commit('setUserInfo', response.data.data)
+      //     resolve()
+      //   })
+      //   .catch((err) => {
+      //     reject(err)
+      //   })
     })
   }
 }

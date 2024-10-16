@@ -80,7 +80,7 @@ export default {
     })
   },
   created() {
-    this.getStatDatga()
+    // this.getStatDatga()
   },
   methods: {
     getStatDatga() {

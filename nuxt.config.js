@@ -25,7 +25,7 @@ export default {
   // 引入插件
   plugins: [
     '@/plugins/antd-ui',
-    '@/plugins/axios',
+    '@/plugins/axios', // 配置@nuxtjs/axios的接口请求插件
     '@/plugins/swiper'
   ],
 
@@ -40,7 +40,7 @@ export default {
 
   // 中间件
   router: {
-    middleware: 'auth'
+    middleware: 'auth' // 权限校验中间件
   },
 
   // nuxt内置模块
@@ -54,24 +54,22 @@ export default {
   // Axios 模块设置
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-    proxy: true
+    baseURL: 'https://jsonplaceholder.typicode.com'
+    // 是否开启代理
+    // proxy: true
   },
 
   // 跨域设置
-  proxy: {
-    '/api': {
-      target: 'http://192.168.100.14:3351' // 目标接口域名
-    },
-    '/content': {
-      target: 'https://www.ahss.com.cn', // 目标接口域名
-      pathRewrite: {
-        '^/content': '/api' // 把 /api 替换成 /
-      }
-    }
-  },
+  // proxy: {
+  //   '/content': {
+  //     target: 'https://www.ahss.com.cn', // 目标接口域名
+  //     pathRewrite: {
+  //       '^/content': '/api' // 把 /api 替换成 /
+  //     }
+  //   }
+  // },
 
-  // less配置
+  // less全局配置
   styleResources: {
     less: ['@/assets/less/_flex.less', '@/assets/less/_common.less', '@/assets/less/theme.less']
   },

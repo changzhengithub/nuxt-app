@@ -2,8 +2,7 @@
   <div class="index">
     <div class="index-wrap">
       <div class="wrap-header">{{ newsDetail.title }}</div>
-      <div class="wrap-content" v-html="newsDetail.contents">
-      </div>
+      <div class="wrap-content">{{ newsDetail.body }}</div>
     </div>
   </div>
 </template>
@@ -20,11 +19,8 @@ export default {
   layout: 'BasicLayout',
   // 用户获取数据
   asyncData ({ $axios, params, error }) {
-    return $axios.$get(`/content/findById?id=${params.id}`, {
-      params
-    }).then(res => {
-      const data = res.data
-      return { newsDetail: data }
+    return $axios.$get(`/posts/${params.id}`).then(res => {
+      return { newsDetail: res }
     }).catch(err => {
       error({ statusCode: err.code, message: err.message })
       // return { newsList: [] }
@@ -55,7 +51,7 @@ export default {
   width: 100%;
   background-color: #fff;
   .index-wrap {
-    width: 1240px;
+    width: 1000px;
     padding: 40px 0;
     margin: 0 auto;
     .wrap-header {
@@ -63,14 +59,14 @@ export default {
       margin-bottom: 30px;
       font-family: PingFang SC;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 30px;
       color: #1e1f23;
     }
     .wrap-content {
       width: 100%;
-      img {
-        max-width: 100%;
-      }
+      font-size: 20px;
+      color: #333;
+      line-height: 2;
     }
   }
 }
