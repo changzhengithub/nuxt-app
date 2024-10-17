@@ -38,8 +38,9 @@ export default {
     '@nuxtjs/eslint-module'
   ],
 
-  // 中间件
+  // 路由设置
   router: {
+    // 中间件
     middleware: 'auth' // 权限校验中间件
   },
 
@@ -72,6 +73,11 @@ export default {
   // less全局配置
   styleResources: {
     less: ['@/assets/less/_flex.less', '@/assets/less/_common.less', '@/assets/less/theme.less']
+  },
+
+  // 静态文件打包配置
+  generate: {
+    routes: ['/news/1', '/news/2', '/news/3', '/news/4', '/news/5', '/news/6', '/news/7', '/news/8', '/news/9', '/news/10']
   },
 
   // 构建配置，自定义 webpack 的构建配置
